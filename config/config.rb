@@ -1,5 +1,5 @@
 # Serve HTTP traffic on this port
-set  :bind, "192.168.86.55"
+set  :bind, "172.16.10.55"
 set  :port, 4567
 
 riemann_base = '/var/lib/gems/1.9.1/gems/riemann-dash-0.2.8'

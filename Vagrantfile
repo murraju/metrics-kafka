@@ -26,7 +26,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   config.vm.define "zookeeper" do |zookeeper|
-    zookeeper.vm.network :private_network, ip: "192.168.86.5"
+    zookeeper.vm.network :private_network, ip: "172.16.10.5"
     zookeeper.vm.provider :vmware_fusion do |vb|
       vb.customize ["modifyvm", :id, "--memory", "512"]
     end
@@ -34,7 +34,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "brokerOne" do |brokerOne|
-    brokerOne.vm.network :private_network, ip: "192.168.86.10"
+    brokerOne.vm.network :private_network, ip: "172.16.10.10"
     brokerOne.vm.provider :vmware_fusion do |vb|
       vb.customize ["modifyvm", :id, "--memory", "512"]
     end
@@ -42,7 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.define "riemann" do |riemann|
-    riemann.vm.network :private_network, ip: "192.168.86.55"
+    riemann.vm.network :private_network, ip: "172.16.10.55"
     riemann.vm.provider :vmware_fusion do |vb|
       vb.customize ["modifyvm", :id, "--memory", "512"]
     end

@@ -31,8 +31,8 @@ import java.util.*;
 import static org.junit.Assert.assertNotNull;
 
 public class MetricsReportingSteps {
-    private final String zkConnect = "192.168.86.5:2181";
-    private final String kafkaConnect = "192.168.86.10:9092";
+    private final String zkConnect = "172.16.10.5:2181";
+    private final String kafkaConnect = "172.16.10.10:9092";
     private final String topic = UUID.randomUUID().toString();
     private KafkaReporter kafkaReporter;
     private MetricRegistry registry;
