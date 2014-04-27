@@ -19,15 +19,15 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box = "precise64"
+  config.vm.box = "precise64_vmware.box"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
+  # config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
   config.vm.define "zookeeper" do |zookeeper|
     zookeeper.vm.network :private_network, ip: "192.168.86.5"
-    zookeeper.vm.provider :virtualbox do |vb|
+    zookeeper.vm.provider :vmware_fusion do |vb|
       vb.customize ["modifyvm", :id, "--memory", "512"]
     end
     zookeeper.vm.provision "shell", path: "vagrant/zk.sh"
@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "brokerOne" do |brokerOne|
     brokerOne.vm.network :private_network, ip: "192.168.86.10"
-    brokerOne.vm.provider :virtualbox do |vb|
+    brokerOne.vm.provider :vmware_fusion do |vb|
       vb.customize ["modifyvm", :id, "--memory", "512"]
     end
     brokerOne.vm.provision "shell", path: "vagrant/broker.sh", :args => "1"
@@ -43,7 +43,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define "riemann" do |riemann|
     riemann.vm.network :private_network, ip: "192.168.86.55"
-    riemann.vm.provider :virtualbox do |vb|
+    riemann.vm.provider :vmware_fusion do |vb|
       vb.customize ["modifyvm", :id, "--memory", "512"]
     end
     riemann.vm.provision "shell", path: "vagrant/riemann.sh", :args => "1"
